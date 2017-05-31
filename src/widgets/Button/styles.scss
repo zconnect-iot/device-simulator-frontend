@@ -1,0 +1,43 @@
+@import "../../scss/base/constants";
+
+:local(.button) {
+  padding: $PADDING / 2 $PADDING;
+  font-size: $FONT_SIZE_MEDIUM;
+  font-weight: bold;
+  border-radius: $BORDER_RADIUS;
+  border: none;
+  background: $ACCENT_GREEN;
+  color: white;
+
+  &:hover {
+    background: lighten($ACCENT_GREEN, 10%)
+  }
+
+  &:active {
+    background: darken($ACCENT_GREEN, 10%)
+  }
+
+  &.disabled {
+    background: $STATUS_GRAY;
+
+    &:hover {
+      background: lighten($STATUS_GRAY, 10%)
+    }
+
+    &:active {
+      background: darken($STATUS_GRAY, 10%)
+    }
+  }
+
+  &.danger {
+    background: $STATUS_RED;
+
+    &:hover {
+      background: lighten($STATUS_RED, 10%)
+    }
+
+    &:active {
+      background: darken($STATUS_RED, 10%)
+    }
+  }
+}

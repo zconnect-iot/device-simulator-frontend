@@ -1,0 +1,11 @@
+@import '../../scss/base/constants';
+
+:local(.Controls) {
+  background: $BG_LIGHTNAVY;
+  padding-top: 20px;
+  border-radius: 5px;
+}
+
+:local(.Fridge) {
+  max-height: 45vh;
+}

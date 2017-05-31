@@ -1,0 +1,12 @@
+{
+  "variables": {
+    "outside_temp": 27,
+    "gas_level": 0.8
+  },
+  "state": {
+    "inside_temp": 2.3,
+    "power": 200,
+    "pressure": 0.2,
+    "compressor_temp": 49
+  }
+}

@@ -1,0 +1,28 @@
+extends:
+  eslint-config-airbnb
+
+parser:
+  babel-eslint
+
+settings:
+  ecmascript: 6
+  import/resolver: webpack
+
+ecmaFeatures:
+  jsx: true
+  modules: true
+  destructuring: true
+  classes: true
+  forOf: true
+  blockBindings: true
+  arrowFunctions: true
+
+env:
+  browser: true
+
+rules:
+  semi: [error, never]
+  react/jsx-filename-extension: 0
+  react/jsx-first-prop-new-line: [warn, multiline]
+  no-underscore-dangle: 0
+  camelcase: 0
