@@ -1,5 +1,7 @@
 import { createSelector } from 'reselect'
 
+import { sortAlphaNum } from 'utils'
+
 const selectDeviceDomain = state => state.get('device')
 
 export const selectSelectedDevice = createSelector(
@@ -21,7 +23,7 @@ export const selectVariablesList = createSelector(
   selectVariables,
   variables => Object.entries(variables)
     .map(item => ({ label: item[0], ...item[1] }))
-    .sort((a, b) => a.value > b.value),
+    .sort((a, b) => sortAlphaNum(a.label, b.label)),
 )
 
 export const selectState = createSelector(
@@ -33,5 +35,5 @@ export const selectStateList = createSelector(
   selectState,
   state => Object.entries(state)
     .map(item => ({ label: item[0], ...item[1] }))
-    .sort((a, b) => a.value > b.value),
+    .sort((a, b) => sortAlphaNum(a.label, b.label)),
 )

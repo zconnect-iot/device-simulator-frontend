@@ -1,37 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'react-bootstrap'
-import Slider from 'react-bootstrap-slider'
 
-
-import ListGroup from 'widgets/ListGroup'
 import FridgeSVG from 'assets/images/fridge.svg'
 
+import Variables from './Variables'
+import Sensors from './Sensors'
 import { startPolling, stopPolling } from './actions'
-import { selectVariablesList, selectStateList } from './selectors'
 import styles from './styles.scss'
 
-function renderStateRow({ label, value }) {
-  return <span className={styles.variableLabel}>{label}: {Math.round(value * 100) / 100}</span>
-}
-
-function renderVariableRow({ label, value, changeValue }) {
-  return (
-    <div>
-      <div className={styles.variableLabel}>
-        {label}: {Math.round(value * 100) / 100}
-      </div>
-      <Slider
-        value={value}
-        change={changeValue}
-        slideStop={changeValue}
-        step={1}
-        max={100}
-        min={0}
-      />
-    </div>
-  )
-}
 
 class Device extends React.Component {
 
@@ -43,28 +20,16 @@ class Device extends React.Component {
     this.props.stopPolling()
   }
 
-  changeValue(args) {
-    console.log(args)
-  }
-
   render() {
-    const { params, variables, state } = this.props
+    const { state } = this.props
     return (
       <div className={styles.Device}>
         <div className={styles.Left}>
           <Image src={FridgeSVG} responsive />
         </div>
         <div className={styles.Right}>
-          <ListGroup
-            items={variables.map(v => ({ ...v, changeValue: this.changeValue }))}
-            title="Variables"
-            renderRow={renderVariableRow}
-          />
-          <ListGroup
-            items={state}
-            title="State"
-            renderRow={renderStateRow}
-          />
+          <Variables />
+          <Sensors />
         </div>
       </div>
     )
@@ -73,8 +38,6 @@ class Device extends React.Component {
 
 function mapStateToProps(state) {
   return {
-    variables: selectVariablesList(state),
-    state: selectStateList(state),
   }
 }
 
