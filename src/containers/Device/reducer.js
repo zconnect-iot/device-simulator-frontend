@@ -11,6 +11,7 @@ const initialState = fromJS({
     variables: {},
     state: {},
   },
+  targets: {},
 })
 
 export default function (state = initialState, action) {
@@ -41,6 +42,10 @@ export default function (state = initialState, action) {
           variables: {},
           state: {},
         }))
+
+    case C.SET_VARIABLE:
+      return state
+        .mergeIn(['targets'], fromJS({ [action.variable]: action.value }))
 
     default:
       return state

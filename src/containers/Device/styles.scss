@@ -9,6 +9,10 @@
 
 :local(.Left) {
   flex: 0.6;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
 }
 
 :local(.Right) {

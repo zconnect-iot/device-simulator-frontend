@@ -8,9 +8,9 @@ import styles from './styles.scss'
 
 class Sensors extends React.Component {
 
-  renderRow = ({ label, value }) => {
+  renderRow = ({ name, value }) => {
     return (<span className={styles.variableLabel}>
-      {label}: {Math.round(value * 100) / 100}
+      {name}: {Math.round(value * 100) / 100}
     </span>)
   }
 
@@ -19,7 +19,7 @@ class Sensors extends React.Component {
     return (
       <ListGroup
         items={state}
-        title="State"
+        title="Sensors"
         renderRow={this.renderRow}
       />
     )

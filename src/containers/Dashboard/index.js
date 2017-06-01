@@ -2,6 +2,8 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router'
 
+import styles from './styles.scss'
+
 class Dashboard extends React.Component {
 
   componentDidMount() {
@@ -12,7 +14,7 @@ class Dashboard extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className={styles.Dashboard}>
         <h2>Dashboard</h2>
         <ul className="list-group">
           <li className="list-group-header">Virtual Devices</li>

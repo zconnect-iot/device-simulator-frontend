@@ -5,10 +5,10 @@ export default function ListGroup(props) {
   return (<ul className="list-group">
     <li className="list-group-header">{title}</li>
     { items.map(item => (
-      <li key={item.label} className="list-group-item">
+      <li key={item.name} className="list-group-item">
         { item.value && <span
           className="list-group-progress"
-          style={{ width: `${(item.value / item.max) * 100}%` }}
+          style={{ width: `${Math.min((item.value / (item.max - item.min)) * 100, 100)}%` }}
         /> }
         { renderRow(item) }
       </li>)) }
@@ -18,9 +18,10 @@ export default function ListGroup(props) {
 ListGroup.propTypes = {
   title: PropTypes.string.isRequired,
   items: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     value: PropTypes.number,
     min: PropTypes.number,
     max: PropTypes.number,
   })).isRequired,
+  renderRow: PropTypes.func.isRequired,
 }

@@ -1,47 +1,32 @@
-import React from 'react'
+import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import Slider from 'react-bootstrap-slider'
 
 import ListGroup from 'widgets/ListGroup'
 
+import Variable from 'containers/Variable'
 import { selectVariablesList } from './selectors'
-import styles from './styles.scss'
 
 
 class Variables extends React.Component {
-
-  changeValue(args) {
-    console.log(args)
-  }
-
-  renderRow = ({ label, value }) => {
-    return (
-      <div>
-        <div className={styles.variableLabel}>
-          {label}: {Math.round(value * 100) / 100}
-        </div>
-        <Slider
-          value={value}
-          change={this.changeValue}
-          slideStop={this.changeValue}
-          step={1}
-          max={100}
-          min={0}
-        />
-      </div>
-    )
-  }
-
+  renderRow = props => <Variable {...props} />
   render() {
-    const { variables } = this.props
     return (
       <ListGroup
-        items={variables}
+        items={this.props.variables}
         title="Variables"
         renderRow={this.renderRow}
       />
     )
   }
+}
+
+Variables.propTypes = {
+  variables: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    value: PropTypes.number.isRequired,
+    min: PropTypes.number.isRequired,
+    max: PropTypes.number.isRequired,
+  })).isRequired,
 }
 
 function mapStateToProps(state) {
@@ -50,12 +35,6 @@ function mapStateToProps(state) {
   }
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-  }
-}
-
 export default connect(
   mapStateToProps,
-  mapDispatchToProps,
 )(Variables)

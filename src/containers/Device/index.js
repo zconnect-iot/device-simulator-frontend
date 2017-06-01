@@ -21,10 +21,11 @@ class Device extends React.Component {
   }
 
   render() {
-    const { state } = this.props
+    const { params } = this.props
     return (
       <div className={styles.Device}>
         <div className={styles.Left}>
+          <h3>{params.id}</h3>
           <Image src={FridgeSVG} responsive />
         </div>
         <div className={styles.Right}>
