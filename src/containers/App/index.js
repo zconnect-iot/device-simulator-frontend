@@ -1,18 +1,18 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { browserHistory } from 'react-router'
 
-import { isAuthenticated } from 'auth/selectors'
+import { getAuthToken, logoutUser, loginUserState } from 'auth/actions'
 
 import styles from './styles.scss'
 
 class App extends React.Component {
-  componentDidMount() {
-    const { isAuthenticated, path } = this.props
-    if (!isAuthenticated && path !== 'login') browserHistory.push('/login')
+
+  componentWillMount() {
+    if (!getAuthToken()) this.props.logOutUser()
+    else this.props.logInUser()
   }
+
   render() {
-    // if (this.props.isAuthenticated) return null
     return (
       <div className={styles.App}>
         {this.props.children}
@@ -21,11 +21,15 @@ class App extends React.Component {
   }
 }
 
-function mapStateToProps(state, ownProps) {
+function mapDispatchToProps(dispatch) {
   return {
-    isAuthenticated: isAuthenticated(state),
-    path: ownProps.location.pathname,
+    logOutUser: () => dispatch(logoutUser()),
+    logInUser: () => dispatch(loginUserState()),
   }
 }
 
-export default connect(mapStateToProps)(App)
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(App)

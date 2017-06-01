@@ -17,25 +17,20 @@ export const deletePasswordResetToken = () => localStorage.removeItem('passwordR
 export const submitLoginDetails = (payload, redirect = '/') => (dispatch) => {
   dispatch({ type: C.SUBMIT_LOGIN })
   apifetch({ url: '/api/v1/auth', payload, tokenAuth: false })
-      .then((payload) => {
-        storeAuthToken(payload.token)
-        dispatch(loginUserState())
-        browserHistory.push(redirect)
-      })
-      .catch(error => dispatch(loginError(error)))
-      // .catch((error) => { // TODO: Swap back for prod
-      //   storeAuthToken('hsdjhdgk')
-      //   dispatch(loginUserState())
-      //   browserHistory.push(redirect)
-      // })
+    .then((payload) => {
+      storeAuthToken(payload.token)
+      dispatch(loginUserState())
+      browserHistory.push(redirect)
+    })
+    .catch(error => dispatch(loginError(error)))
 }
 
 export const loginUserState = () => ({ type: C.LOGIN_USER })
 export const logoutUserState = () => ({ type: C.LOGOUT_USER })
 
-export const logoutUser = (dispatch) => {
+export const logoutUser = () => (dispatch) => {
   deleteAuthToken()
-  dispatch(push('/login'))
+  browserHistory.push('/login')
   dispatch(logoutUserState())
 }
 
