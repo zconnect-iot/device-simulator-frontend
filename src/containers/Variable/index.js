@@ -2,14 +2,19 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import Slider from 'react-bootstrap-slider'
 
-import { setVariable } from './actions'
+import { submitVariable, setVariable } from './actions'
 import { selectTargetValue } from './selectors'
 import styles from './styles.scss'
 
 
 class Variable extends React.Component {
 
+  onChanged = ({ target }) => {
+    this.props.submitVariable(target.value)
+  }
+
   onChange = ({ target }) => {
+    // Needed to prevent status response overriding the value whilst sliding
     this.props.setVariable(target.value)
   }
 
@@ -23,7 +28,8 @@ class Variable extends React.Component {
         </div>
         <Slider
           value={target || value}
-          slideStop={this.onChange}
+          slideStop={this.onChanged}
+          change={this.onChange}
           step={max < 2 ? 0.01 : 1}
           max={max}
           min={min}
@@ -39,6 +45,7 @@ Variable.propTypes = {
   target: PropTypes.number,
   min: PropTypes.number.isRequired,
   max: PropTypes.number.isRequired,
+  submitVariable: PropTypes.func.isRequired,
   setVariable: PropTypes.func.isRequired,
 }
 
@@ -51,6 +58,7 @@ function mapStateToProps(state, props) {
 function mapDispatchToProps(dispatch, props) {
   const { name } = props
   return {
+    submitVariable: value => dispatch(submitVariable(name, value)),
     setVariable: value => dispatch(setVariable(name, value)),
   }
 }

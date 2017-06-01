@@ -44,6 +44,7 @@ export default function (state = initialState, action) {
         }))
 
     case C.SET_VARIABLE:
+    case C.SUBMIT_VARIABLE:
       return state
         .mergeIn(['targets'], fromJS({ [action.variable]: action.value }))
 

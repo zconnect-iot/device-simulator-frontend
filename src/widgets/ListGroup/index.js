@@ -6,9 +6,9 @@ export default function ListGroup(props) {
     <li className="list-group-header">{title}</li>
     { items.map(item => (
       <li key={item.name} className="list-group-item">
-        { item.value && <span
+        { !!item.value && <span
           className="list-group-progress"
-          style={{ width: `${Math.min((item.value / (item.max - item.min)) * 100, 100)}%` }}
+          style={{ width: `${Math.min(((item.value - item.min) / (item.max - item.min)) * 100, 100)}%` }}
         /> }
         { renderRow(item) }
       </li>)) }

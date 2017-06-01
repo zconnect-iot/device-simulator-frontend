@@ -7,6 +7,7 @@ export default keymirror({
   START_POLLING: null,
   STOP_POLLING: null,
   SET_VARIABLE: null,
-  SET_VARIABLE_SUCCESS: null,
-  SET_VARIABLE_FAILED: null,
+  SUBMIT_VARIABLE: null,
+  SUBMIT_VARIABLE_SUCCESS: null,
+  SUBMIT_VARIABLE_FAILED: null,
 })
