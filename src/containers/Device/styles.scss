@@ -5,6 +5,11 @@
   display: flex;
   flex-direction: row;
   height: 100%;
+
+  @media screen and (max-width: 480px) {
+    flex-direction: column;
+    height: auto;
+  }
 }
 
 :local(.Left) {
