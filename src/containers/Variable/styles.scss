@@ -1,5 +1,22 @@
+@import '../../scss/base/constants';
+
+:local(.Variable) {
+  display: flex;
+  height: 70px;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+
 :local(.variableLabel) {
-  position: relative;
+  flex: 1;
   display: flex;
   justify-content: space-between;
+}
+
+:local(.variableSlider) {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: $OPAQUE;
 }

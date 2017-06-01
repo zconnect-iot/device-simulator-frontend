@@ -19,8 +19,31 @@
   flex: 0.4;
   background: $BG_LIGHTNAVY;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 :local(.variableLabel) {
   position: relative;
+}
+
+:local(.Sensor) {
+  display: flex;
+  height: 60px;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+:local(.sensorLabel) {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+:local(.sensorLevel) {
+  flex: 1;
+  position: relative;
+  background: $OPAQUE;
 }

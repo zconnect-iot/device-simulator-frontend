@@ -21,19 +21,25 @@ class Variable extends React.Component {
   render() {
     const { name, value, target, min, max } = this.props
     return (
-      <div>
+      <div className={styles.Variable}>
         <div className={styles.variableLabel}>
           <span>{name}: {Math.round(value * 100) / 100}</span>
           { target !== undefined && <span className={styles.variableTarget}>{`target: ${target}`}</span> }
         </div>
-        <Slider
-          value={target || value}
-          slideStop={this.onChanged}
-          change={this.onChange}
-          step={max < 2 ? 0.01 : 1}
-          max={max}
-          min={min}
-        />
+        <div className={styles.variableSlider}>
+          <span
+            className="list-group-progress"
+            style={{ width: `${((value - min) / (max - min)) * 100}%` }}
+          />
+          <Slider
+            value={target || value}
+            slideStop={this.onChanged}
+            change={this.onChange}
+            step={max < 2 ? 0.01 : 1}
+            max={max}
+            min={min}
+          />
+        </div>
       </div>
     )
   }

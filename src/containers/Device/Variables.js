@@ -1,23 +1,17 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 
-import ListGroup from 'widgets/ListGroup'
-
 import Variable from 'containers/Variable'
 import { selectVariablesList } from './selectors'
 
 
-class Variables extends React.Component {
-  renderRow = props => <Variable {...props} />
-  render() {
-    return (
-      <ListGroup
-        items={this.props.variables}
-        title="Variables"
-        renderRow={this.renderRow}
-      />
-    )
-  }
+function Variables({ variables }) {
+  return (
+    <div>
+      <h4>Variables</h4>
+      { variables.map(variable => <Variable {...variable} />) }
+    </div>
+  )
 }
 
 Variables.propTypes = {

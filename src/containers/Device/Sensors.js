@@ -1,34 +1,40 @@
 import React from 'react'
 import { connect } from 'react-redux'
 
-import ListGroup from 'widgets/ListGroup'
-
 import { selectStateList } from './selectors'
 import styles from './styles.scss'
 
-class Sensors extends React.Component {
+function Sensor({ name, value, min, max }) {
+  return (
+    <div className={styles.Sensor}>
+      <div className={styles.sensorLabel}>
+        {name}:
+        <span>
+          {Math.round(value * 100) / 100}
+        </span>
+      </div>
+      <div className={styles.sensorLevel}>
+        <span
+          className="list-group-progress"
+          style={{ width: `${((value - min) / (max - min)) * 100}%` }}
+        />
+      </div>
+    </div>
+  )
+}
 
-  renderRow = ({ name, value }) => {
-    return (<span className={styles.variableLabel}>
-      {name}: {Math.round(value * 100) / 100}
-    </span>)
-  }
-
-  render() {
-    const { state } = this.props
-    return (
-      <ListGroup
-        items={state}
-        title="Sensors"
-        renderRow={this.renderRow}
-      />
-    )
-  }
+function Sensors({ sensors }) {
+  return (
+    <div>
+      <h4>Sensors</h4>
+      { sensors.map(sensor => <Sensor {...sensor} />) }
+    </div>
+  )
 }
 
 function mapStateToProps(state) {
   return {
-    state: selectStateList(state),
+    sensors: selectStateList(state),
   }
 }
 
