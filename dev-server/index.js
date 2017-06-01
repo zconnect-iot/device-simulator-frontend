@@ -15,10 +15,10 @@ const variation = 0.1
 app.get('/api/v1/:id/status', (req, res) => {
   Object.keys(status).forEach((type) => {
     Object.keys(status[type]).forEach((variable) => {
-      const previous = status[type][variable]
+      const previous = status[type][variable].value
       const increase = Math.random() < 0.5
       const change = previous * (variation * Math.random())
-      status[type][variable] = increase ? previous + change : previous - change
+      status[type][variable].value = increase ? previous + change : previous - change
     })
   })
   res.setHeader('Content-Type', 'application/json')

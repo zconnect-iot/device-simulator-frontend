@@ -1,7 +1,10 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { browserHistory } from 'react-router'
+
 import { isAuthenticated } from 'auth/selectors'
+
+import styles from './styles.scss'
 
 class App extends React.Component {
   componentDidMount() {
@@ -11,7 +14,7 @@ class App extends React.Component {
   render() {
     // if (this.props.isAuthenticated) return null
     return (
-      <div className="container-fluid">
+      <div className={styles.App}>
         {this.props.children}
       </div>
     )

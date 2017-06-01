@@ -20,7 +20,7 @@ export const selectVariables = createSelector(
 export const selectVariablesList = createSelector(
   selectVariables,
   variables => Object.entries(variables)
-    .map(item => ({ label: item[0], value: item[1] }))
+    .map(item => ({ label: item[0], ...item[1] }))
     .sort((a, b) => a.value > b.value),
 )
 
@@ -32,6 +32,6 @@ export const selectState = createSelector(
 export const selectStateList = createSelector(
   selectState,
   state => Object.entries(state)
-    .map(item => ({ label: item[0], value: item[1] }))
+    .map(item => ({ label: item[0], ...item[1] }))
     .sort((a, b) => a.value > b.value),
 )
