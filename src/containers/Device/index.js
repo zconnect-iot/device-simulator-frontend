@@ -3,10 +3,11 @@ import { connect } from 'react-redux'
 import { Image } from 'react-bootstrap'
 
 import FridgeSVG from 'assets/images/fridge.svg'
+import Button from 'widgets/Button'
 
 import Variables from './Variables'
 import Sensors from './Sensors'
-import { startPolling, stopPolling } from './actions'
+import { startPolling, stopPolling, resetVariables } from './actions'
 import styles from './styles.scss'
 
 
@@ -31,6 +32,7 @@ class Device extends React.Component {
         <div className={styles.Right}>
           <Variables />
           <Sensors />
+          <Button onClick={this.props.resetVariables} danger>RESET</Button>
         </div>
       </div>
     )
@@ -46,6 +48,7 @@ function mapDispatchToProps(dispatch) {
   return {
     startPolling: id => dispatch(startPolling(id)),
     stopPolling: () => dispatch(stopPolling()),
+    resetVariables: () => dispatch(resetVariables()),
   }
 }
 

@@ -48,6 +48,10 @@ export default function (state = initialState, action) {
       return state
         .mergeIn(['targets'], fromJS({ [action.variable]: action.value }))
 
+    case C.RESET_VARIABLES:
+      return state
+        .set('targets', fromJS({}))
+
     default:
       return state
   }

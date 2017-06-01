@@ -10,4 +10,5 @@ export default keymirror({
   SUBMIT_VARIABLE: null,
   SUBMIT_VARIABLE_SUCCESS: null,
   SUBMIT_VARIABLE_FAILED: null,
+  RESET_VARIABLES: null,
 })

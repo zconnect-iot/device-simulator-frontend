@@ -8,7 +8,7 @@ function Sensor({ name, value, min, max }) {
   return (
     <div className={styles.Sensor}>
       <div className={styles.sensorLabel}>
-        {name}:
+        {name}
         <span>
           {Math.round(value * 100) / 100}
         </span>
@@ -27,7 +27,7 @@ function Sensors({ sensors }) {
   return (
     <div>
       <h4>Sensors</h4>
-      { sensors.map(sensor => <Sensor {...sensor} />) }
+      { sensors.map(sensor => <Sensor key={sensor.name} {...sensor} />) }
     </div>
   )
 }

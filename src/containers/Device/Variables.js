@@ -9,7 +9,7 @@ function Variables({ variables }) {
   return (
     <div>
       <h4>Variables</h4>
-      { variables.map(variable => <Variable {...variable} />) }
+      { variables.map(variable => <Variable key={variable.name} {...variable} />) }
     </div>
   )
 }

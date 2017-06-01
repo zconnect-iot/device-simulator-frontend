@@ -1,14 +1,11 @@
 import React, { PropTypes } from 'react'
 import classnames from 'classnames'
 
-// import styles from './styles.scss'
-const styles = {}
-
 export default function Button(props) {
   const { children, className, danger, ...otherProps } = props
   return (
     <button
-      className={classnames(styles.button, { danger }, { disabled: props.disabled }, className)}
+      className={classnames('btn', `btn-${danger ? 'danger' : 'success'}`, className)}
       type="button"
       {...otherProps}
     >

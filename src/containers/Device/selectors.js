@@ -14,11 +14,6 @@ const selectStatus = createSelector(
   device => device.get('status'),
 )
 
-const selectSliders = createSelector(
-  selectDeviceDomain,
-  device => device.get('sliders'),
-)
-
 export const selectVariables = createSelector(
   selectStatus,
   status => status.get('variables').toJS(),
@@ -41,12 +36,4 @@ export const selectStateList = createSelector(
   state => Object.entries(state)
     .map(item => ({ name: item[0], ...item[1] }))
     .sort((a, b) => sortAlphaNum(a.name, b.name)),
-)
-
-const selectVariableFromProps = (_, { variable }) => variable
-
-export const selectSliderValue = createSelector(
-  selectSliders,
-  selectVariableFromProps,
-  (sliders, variable) => sliders.get(variable),
 )

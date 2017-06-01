@@ -53,3 +53,9 @@ export function fetchStatusFailed(error) {
     }
   }
 }
+
+export function resetVariables() {
+  return {
+    type: C.RESET_VARIABLES,
+  }
+}

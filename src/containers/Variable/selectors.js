@@ -24,21 +24,3 @@ export const selectTargetValue = createSelector(
   selectVariableFromProps,
   (targets, variable) => targets.get(variable),
 )
-
-// export const selectCurrentValue = createSelector(
-//   selectVariables,
-//   selectVariableFromProps,
-//   (variables, variable) => variables.getIn([variable, 'value']),
-// )
-//
-// export const selectMinimum = createSelector(
-//   selectVariables,
-//   selectVariableFromProps,
-//   (variables, variable) => variables.getIn([variable, 'min']),
-// )
-//
-// export const selectMaximum = createSelector(
-//   selectVariables,
-//   selectVariableFromProps,
-//   (variables, variable) => variables.getIn([variable, 'max']),
-// )
