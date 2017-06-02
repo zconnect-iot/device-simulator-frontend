@@ -24,3 +24,8 @@ export const selectTargetValue = createSelector(
   selectVariableFromProps,
   (targets, variable) => targets.get(variable),
 )
+
+export const selectIsDirty = createSelector(
+  selectTargets,
+  targets => !!targets.size,
+)

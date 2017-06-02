@@ -4,6 +4,7 @@ import { Link } from 'react-router'
 
 import styles from './styles.scss'
 
+// TODO: Swap for actual device id / make dynamic once multiple devices available
 class Dashboard extends React.Component {
 
   componentDidMount() {

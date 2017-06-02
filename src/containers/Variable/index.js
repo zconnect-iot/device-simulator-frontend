@@ -24,7 +24,7 @@ class Variable extends React.Component {
       <div className={styles.Variable}>
         <div className={styles.variableLabel}>
           {name}
-          <span>{target || value}</span>
+          <span>{(target || value).toFixed(2)}</span>
         </div>
         <div className={styles.variableSlider}>
           <Slider
