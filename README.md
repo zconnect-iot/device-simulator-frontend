@@ -65,11 +65,11 @@ npm run preview
 $ npm run lint
 ```
 
+## Docker
+
+`docker build --no-cache -t device-sim-front .`
+`docker run -p 80:9000 device-sim-front`
+
 ## Tooling Based On
 
 [react-redux-webpack2-boilerplate](https://github.com/Stanko/react-redux-webpack2-boilerplate#readme)
-
-## Docker
-
-`docker build -t zconnect-demo-front .`
-`docker run -p 80:80 -d zconnect-demo-front`

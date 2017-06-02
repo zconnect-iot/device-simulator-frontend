@@ -1,15 +1,17 @@
-FROM node:boron
+FROM node:latest
 
 # Create app directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install app dependencies
-COPY yarn.lock /usr/src/app/
-RUN yarn install --production
-
-# Bundle app source
+# Copy src
 COPY . /usr/src/app
+
+# Install dependencies
+RUN npm install
+
+# Build
+RUN npm run build
 
 EXPOSE 9000
 CMD node prod-server/index.js
