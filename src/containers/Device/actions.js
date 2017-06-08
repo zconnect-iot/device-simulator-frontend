@@ -9,7 +9,7 @@ export function fetchStatus() {
   return (dispatch, getState) => {
     const id = selectSelectedDevice(getState())
     dispatch({ type: C.FETCH_STATUS, id })
-    apifetch({ url: `/api/v1/${id}/status` })
+      apifetch({ url: `/api/v1/device/${id}/status` })
       .then(payload => dispatch(fetchStatusSuccess(payload)))
       .catch(error => dispatch(fetchStatusFailed(error)))
   }

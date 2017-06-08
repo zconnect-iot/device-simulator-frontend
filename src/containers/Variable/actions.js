@@ -31,7 +31,7 @@ export function submitVariable(variable, value) {
       value,
     })
     const id = selectSelectedDevice(getState())
-    apifetch({ url: `/api/v1/${id}/variables`, payload: { [variable]: value } })
+      apifetch({ url: `/api/v1/device/${id}/variables`, payload: { [variable]: value } })
       .then(() => dispatch(submitVariableSuccess()))
       .catch(error => dispatch(submitVariableFailed(error)))
   }

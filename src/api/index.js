@@ -35,7 +35,7 @@ export function apifetch({ url, payload, tokenAuth = true, resetToken = false })
 
   return fetch(fullUrl, conf)
     .then((response) => {
-      if (response.status === 401) {
+      if ([401, 422].indexOf(response.status) !== -1) {
         // Effectively logs user out but doesn't dispatch/update state.
         // Instead it's picked up in the Auth component which logs out user.
         deleteAuthToken()
