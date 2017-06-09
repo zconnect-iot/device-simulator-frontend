@@ -16,14 +16,14 @@ export function getHeaders(tokenAuth, resetToken) {
   return headers
 }
 
-export function apifetch({ url, payload, tokenAuth = true, resetToken = false }) {
+export function apifetch({ url, payload, tokenAuth = true, resetToken = false, method = 'get' }) {
   let fullUrl = url
   if (url.indexOf('http://') < 0) { // domain not in url
     fullUrl = `http://${rootDomain}:${apiPort}${url}`
   }
   const headers = getHeaders(tokenAuth, resetToken)
   const conf = {
-    method: 'get',
+    method,
     headers,
     mode: 'cors',
     cache: 'default',
