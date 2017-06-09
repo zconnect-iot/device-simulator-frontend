@@ -24,7 +24,7 @@ class Device extends React.Component {
   }
 
   render() {
-    const { isDirty, params } = this.props
+    const { params } = this.props
     return (
       <div className={styles.Device}>
         <div className={styles.Left}>
@@ -34,7 +34,7 @@ class Device extends React.Component {
         <div className={styles.Right}>
           <Variables />
           <Sensors />
-          { isDirty && <Button onClick={this.props.reset} danger>RESET</Button> }
+          { <Button onClick={this.props.reset} danger>RESET</Button> }
         </div>
       </div>
     )
