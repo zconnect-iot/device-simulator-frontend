@@ -15,6 +15,19 @@ export function fetchStatus() {
   }
 }
 
+export function sendReset() {
+  return (dispatch, getState) => {
+    const id = selectSelectedDevice(getState())
+    dispatch({
+      type: C.SEND_RESET,
+      id,
+    })
+    apifetch({ url: `api/v1/device/${id}/reset`, method: 'post' })
+    .then(payload => dispatch(resetSuccess(payload)))
+    .catch(error => dispatch(resetFailed(error)))
+  }
+}
+
 export function startPolling(id) {
   return (dispatch) => {
     dispatch({ type: C.START_POLLING, id })
@@ -54,8 +67,27 @@ export function fetchStatusFailed(error) {
   }
 }
 
+export function resetFailed(error) {
+  return (dispatch) => {
+    dispatch({
+      type: C.SEND_RESET_FAILED,
+      error,
+    })
+  }
+}
+
+export function resetSuccess(error) {
+  return (dispatch) => {
+    dispatch({
+      type: C.SEND_RESET_SUCCESS,
+      error,
+    })
+  }
+}
+
 export function reset() {
-  return {
-    type: C.RESET_VARIABLES,
+  return (dispatch) => {
+    dispatch({ type: C.SEND_RESET, })
+    dispatch(sendReset())
   }
 }
