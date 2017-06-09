@@ -42,7 +42,6 @@ class Device extends React.Component {
 }
 
 Device.propTypes = {
-  isDirty: PropTypes.bool.isRequired,
   startPolling: PropTypes.func.isRequired,
   stopPolling: PropTypes.func.isRequired,
   reset: PropTypes.func.isRequired,

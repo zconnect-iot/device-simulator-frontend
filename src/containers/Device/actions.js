@@ -16,13 +16,14 @@ export function fetchStatus() {
 }
 
 export function sendReset() {
+  console.log('Send Reset')
   return (dispatch, getState) => {
     const id = selectSelectedDevice(getState())
     dispatch({
       type: C.SEND_RESET,
       id,
     })
-    apifetch({ url: `api/v1/device/${id}/reset`, method: 'post' })
+    apifetch({ url: `/api/v1/device/${id}/reset`, method: 'post' })
     .then(payload => dispatch(resetSuccess(payload)))
     .catch(error => dispatch(resetFailed(error)))
   }
@@ -86,8 +87,9 @@ export function resetSuccess(error) {
 }
 
 export function reset() {
+  console.log('Reset')
   return (dispatch) => {
-    dispatch({ type: C.SEND_RESET, })
+    dispatch({ type: C.SEND_RESET })
     dispatch(sendReset())
   }
 }
