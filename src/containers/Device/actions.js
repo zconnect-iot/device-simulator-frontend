@@ -77,19 +77,18 @@ export function resetFailed(error) {
   }
 }
 
-export function resetSuccess(error) {
+export function resetSuccess(payload) {
   return (dispatch) => {
     dispatch({
       type: C.SEND_RESET_SUCCESS,
-      error,
+      payload,
     })
+    dispatch({ type: C.RESET_VARIABLES })
   }
 }
 
 export function reset() {
-  console.log('Reset')
   return (dispatch) => {
-    dispatch({ type: C.SEND_RESET })
     dispatch(sendReset())
   }
 }

@@ -43,6 +43,29 @@ export default function (state = initialState, action) {
           state: {},
         }))
 
+    case C.SEND_RESET:
+      return state
+        .setIn(['api', 'fetching'], true)
+        .setIn(['api', 'error'], false)
+
+    case C.SEND_RESET_SUCCESS:
+      console.log("payload: ", action.payload)
+      return state
+        .set('status', fromJS({
+          variables: {},
+          state: {},
+        }))
+        .setIn(['api', 'fetching'], false)
+
+    case C.SEND_RESET_FAILED:
+      return state
+        .setIn(['api', 'fetching'], false)
+        .setIn(['api', 'error'], true)
+        .set('status', fromJS({
+          variables: {},
+          state: {},
+        }))
+
     case C.SET_VARIABLE:
     case C.SUBMIT_VARIABLE:
       return state
