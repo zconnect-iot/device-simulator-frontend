@@ -27,7 +27,10 @@ function Sensors({ sensors }) {
   return (
     <div>
       <h4>Sensors</h4>
-      { sensors.filter(sensor => sensor.name !== 'ts').map(sensor => <Sensor key={sensor.name} {...sensor} />) }
+      {
+        // Exclude a few keys from the state (timestamps)
+        sensors.filter(sensor => !['ts', 'send_ts'].includes(sensor.name)).map(sensor => <Sensor key={sensor.name} {...sensor} />) 
+      }
     </div>
   )
 }
