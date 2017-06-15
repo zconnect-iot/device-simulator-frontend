@@ -1,9 +1,9 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { Image } from 'react-bootstrap'
+import Fridge from 'containers/Fridge'
 
 import { selectIsDirty } from 'containers/Variable/selectors'
-import FridgeSVG from 'assets/images/fridge.svg'
 import Button from 'widgets/Button'
 
 import Variables from './Variables'
@@ -29,7 +29,7 @@ class Device extends React.Component {
       <div className={styles.Device}>
         <div className={styles.Left}>
           <h3>{params.id}</h3>
-          <Image src={FridgeSVG} responsive />
+          <Fridge />
         </div>
         <div className={styles.Right}>
           <Variables />
