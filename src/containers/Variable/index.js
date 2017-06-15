@@ -19,11 +19,11 @@ class Variable extends React.Component {
   }
 
   render() {
-    const { name, value, target, min, max } = this.props
+    const { human_name, value, target, min, max } = this.props
     return (
       <div className={styles.Variable}>
         <div className={styles.variableLabel}>
-          {name}
+          {human_name}
           <span>{(target || value).toFixed(2)}</span>
         </div>
         <div className={styles.variableSlider}>
@@ -43,6 +43,7 @@ class Variable extends React.Component {
 
 Variable.propTypes = {
   name: PropTypes.string.isRequired,
+  human_name: PropTypes.string,
   value: PropTypes.number.isRequired,
   target: PropTypes.number,
   min: PropTypes.number.isRequired,

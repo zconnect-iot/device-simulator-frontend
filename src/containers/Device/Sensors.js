@@ -4,11 +4,11 @@ import { connect } from 'react-redux'
 import { selectStateList } from './selectors'
 import styles from './styles.scss'
 
-function Sensor({ name, value, min, max }) {
+function Sensor({ name, value, min, max, human_name}) {
   return (
     <div className={styles.Sensor}>
       <div className={styles.sensorLabel}>
-        {name}
+        {human_name}
         <span>
           {Math.round(value * 100) / 100}
         </span>
@@ -27,10 +27,7 @@ function Sensors({ sensors }) {
   return (
     <div>
       <h4>Sensors</h4>
-      {
-        // Exclude a few keys from the state (timestamps)
-        sensors.filter(sensor => !['ts', 'send_ts'].includes(sensor.name)).map(sensor => <Sensor key={sensor.name} {...sensor} />) 
-      }
+      { sensors.filter(sensor => !(['ts', 'send_ts', 'temp_in_max', 'temp_in_min', 'current_draw'].includes(sensor.name))).map(sensor => <Sensor key={sensor.name} {...sensor} />) }
     </div>
   )
 }
