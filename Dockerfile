@@ -1,17 +1,8 @@
-FROM node:latest
+FROM nginx:mainline-alpine
 
-# Create app directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+# Put the files in a place
+COPY build /www
+COPY static /www/static
 
-# Copy src
-COPY . /usr/src/app
-
-# Install dependencies
-RUN npm install
-
-# Build
-RUN npm run build
-
-EXPOSE 9000
-CMD node prod-server/index.js
+# Put the config in the right place
+COPY config/console.conf /etc/nginx/conf.d/console.conf
