@@ -15,10 +15,13 @@ build:
         - npm run build
     artifacts:
         untracked: true
+        expire_in: 1hour
 
 
 release-image:
     stage: release
+    dependencies:
+        - build
     image: benhowes/bluemix-deploy:latest
     tags:
         - dind
