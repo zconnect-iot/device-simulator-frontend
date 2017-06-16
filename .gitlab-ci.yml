@@ -3,7 +3,18 @@ image: python:3.6.1
 variables:
 
 stages:
+    - build
     - release
+
+build:
+    stage: build
+    before_script:
+        - npm install
+    script:
+        - npm run build
+    artifacts:
+        untracked: true
+
 
 release-image:
     stage: release
