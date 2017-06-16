@@ -11,14 +11,12 @@ import styles from './styles.scss'
 console.log(chroma)
 
 const convertTempToColour = (temperature) => {
-  //blue colour at 4 and red at 8, fade in between
-  const blue = 5.0
-  const red = 8.0
-  const blue_colour = [0, 0, 255]
-  const red_colour = [255,0,0]
+  //blue colour at 5 and red at 8, fade in between
+  const blue = 3.0
+  const red = 5.0
 
   //Clamp the temperature between 4.1 and 7.9
-  const temp = Math.min(Math.max(temperature, blue+0.1), red-0.1)
+  const temp = Math.min(Math.max(temperature, blue + 0.1), red - 0.1)
   console.log("temp", temp)
   const ratio = (temp - blue) / (red - blue)
   console.log(ratio)
