@@ -1,8 +1,16 @@
 import { createSelector } from 'reselect'
 
-import { selectState } from 'containers/Device/selectors'
+import { selectStatus } from 'containers/Device/selectors'
+
+export const selectState = createSelector(
+  selectStatus,
+  status => status.get('state'),
+)
 
 export const selectInternalTemperature = createSelector(
   selectState,
-  state => Object.entries(state)
+  state => {
+      return state.getIn(['temp_in', 'value'])
+  }
+
 )

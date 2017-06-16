@@ -9,7 +9,7 @@ export const selectSelectedDevice = createSelector(
   device => device.getIn(['api', 'polling']),
 )
 
-const selectStatus = createSelector(
+export const selectStatus = createSelector(
   selectDeviceDomain,
   device => device.get('status'),
 )

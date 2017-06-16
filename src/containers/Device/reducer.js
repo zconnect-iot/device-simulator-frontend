@@ -49,7 +49,6 @@ export default function (state = initialState, action) {
         .setIn(['api', 'error'], false)
 
     case C.SEND_RESET_SUCCESS:
-      console.log("payload: ", action.payload)
       return state
         .set('status', fromJS({
           variables: {},
