@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { selectInternalTemperature } from 'containers/Fridge/selectors'
 // Don't question this webpack magic!
-import FridgeSVG from '-!svg-react-loader?name=FridgeSVG!assets/images/fridge.svg'
+import FridgeSVG from '-!svg-react-loader?name=FridgeSVG!assets/images/fridge-is.svg'
 import { Image } from 'react-bootstrap'
 import * as chroma from 'chroma-js'
 
@@ -38,7 +38,7 @@ class Fridge extends React.Component {
     console.log("Temperature: ", this.props.temperature)
     const colour = convertTempToColour(this.props.temperature)
     return (
-        <FridgeSVG fill={colour}/>
+        <FridgeSVG style={{"stroke": colour, "transition": "2.0s"}}/>
     )
   }
 }
