@@ -1,4 +1,4 @@
 module.exports = {
-  rootDomain: 'localhost',
-  pollingInterval: 1000,
+    rootDomain: window.location.hostname,
+    pollingInterval: 1000,
 }

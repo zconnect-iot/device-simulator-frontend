@@ -18,7 +18,7 @@ export const submitLoginDetails = (payload, redirect = '/') => (dispatch) => {
   dispatch({ type: C.SUBMIT_LOGIN })
   apifetch({ url: '/api/v1/auth', payload, tokenAuth: false })
     .then((payload) => {
-      storeAuthToken(payload.token)
+      storeAuthToken(payload.access_token)
       dispatch(loginUserState())
       browserHistory.push(redirect)
     })
