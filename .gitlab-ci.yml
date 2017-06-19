@@ -31,8 +31,8 @@ release-image:
         - ls
         - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN code.zoetrope.io:4678
 
-        - docker build -f Dockerfile -t code.zoetrope.io:4678/zconnect/device-simulator-frontend/image:latest .
-        - docker push code.zoetrope.io:4678/zconnect/device-simulator-frontend/image:latest
+        - docker build -f Dockerfile -t code.zoetrope.io:4678/zconnect/device-simulator-frontend/image:$CI_COMMIT_TAG .
+        - docker push code.zoetrope.io:4678/zconnect/device-simulator-frontend/image:$CI_COMMIT_TAG
 
     only:
         - tags
