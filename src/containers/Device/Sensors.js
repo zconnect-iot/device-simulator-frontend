@@ -23,7 +23,7 @@ function Sensor({ name, value, min, max, human_name}) {
   )
 }
 
-function isAllowed = sensor => !(
+const isAllowed = sensor => !(
   ['ts', 'send_ts', 'temp_in_max', 'temp_in_min', 'current_draw']
   .includes(sensor.name)
 )
