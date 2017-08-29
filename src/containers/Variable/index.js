@@ -19,7 +19,7 @@ class Variable extends React.Component {
   }
 
   render() {
-    const { human_name, value, target, min, max } = this.props
+    const { human_name, value, target, min, max, step } = this.props
     return (
       <div className={styles.Variable}>
         <div className={styles.variableLabel}>
@@ -31,7 +31,7 @@ class Variable extends React.Component {
             value={target || value}
             slideStop={this.onChanged}
             change={this.onChange}
-            step={max < 2 ? 0.01 : 1}
+            step={step}
             max={max}
             min={min}
           />
