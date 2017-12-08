@@ -23,11 +23,20 @@ function Sensor({ name, value, min, max, human_name}) {
   )
 }
 
+const isAllowed = sensor => !(
+  ['ts', 'send_ts', 'temp_in_max', 'temp_in_min', 'current_draw']
+  .includes(sensor.name)
+)
+
 function Sensors({ sensors }) {
   return (
     <div>
       <h4>Sensors</h4>
-      { sensors.filter(sensor => !(['ts', 'send_ts', 'temp_in_max', 'temp_in_min', 'current_draw'].includes(sensor.name))).map(sensor => <Sensor key={sensor.name} {...sensor} />) }
+      {
+        sensors
+        .filter(isAllowed)
+        .map(sensor => <Sensor key={sensor.name} {...sensor} />)
+      }
     </div>
   )
 }

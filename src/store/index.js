@@ -9,6 +9,11 @@ const isProduction = process.env.NODE_ENV === 'production'
 // Creating store
 let store = null
 
+const dtPresent = window.__REDUX_DEVTOOLS_EXTENSION__
+const maybeEnhanceWithReduxDevtools = (middleware) => (
+  dtPresent ? compose(middleware, dtPresent()) : middleware
+)
+
 if (isProduction) {
   // In production adding only thunk middleware
   const middleware = applyMiddleware(thunk)
@@ -25,15 +30,10 @@ if (isProduction) {
     stateTransformer: state => state.toJS(),
   })
   const middleware = applyMiddleware(thunk, logger)
-  const enhancer = compose(
-    middleware,
-    // Enable DevTools if browser extension is installed
-    window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // eslint-disable-line
-  )
 
   store = createStore(
     rootReducer,
-    enhancer,
+    maybeEnhanceWithReduxDevtools(middleware),
   )
 }
 

@@ -10,7 +10,7 @@ export const selectState = createSelector(
 export const selectInternalTemperature = createSelector(
   selectState,
   state => {
-      return state.getIn(['temp_in', 'value'])
+      return state.getIn(['box-temp', 'value'])
   }
 
 )
