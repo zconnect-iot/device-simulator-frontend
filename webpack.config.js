@@ -59,7 +59,7 @@ const rules = [
     ],
   },
   {
-    test: /\.(png|gif|jpg|svg)$/,
+    test: /\.(png|gif|jpg)$/,
     include: imgPath,
     use: 'url-loader?limit=20480&name=assets/[name]-[hash].[ext]',
   },
