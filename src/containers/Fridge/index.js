@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
 import { selectInternalTemperature } from 'containers/Fridge/selectors'
 // Don't question this webpack magic!
-import FridgeSVG from '-!svg-react-loader?name=FridgeSVG!assets/images/fridge-is.svg'
+import FridgeSVG from 'assets/images/fridge-is.svg' //-!svg-react-loader?name=FridgeSVG!
 import { Image } from 'react-bootstrap'
 import * as chroma from 'chroma-js'
 
