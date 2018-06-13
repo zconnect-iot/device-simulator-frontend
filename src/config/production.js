@@ -1,3 +1,3 @@
 module.exports = {
-  apiPort: '31083',
+  apiPort: '6000',
 }
