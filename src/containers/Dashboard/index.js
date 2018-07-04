@@ -20,7 +20,7 @@ class Dashboard extends React.Component {
         <ul className="list-group">
           <li className="list-group-header">Virtual Devices</li>
           <li className="list-group-item">
-            <Link to="/device/device123">Fridge</Link>
+            <Link to="/device/123">Fridge</Link>
           </li>
         </ul>
       </div>
